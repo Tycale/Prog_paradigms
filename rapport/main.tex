@@ -510,12 +510,12 @@ In JavaScript,
 \setjs
 \begin{lstlisting}
 var filter = function (tab, cond) {
-  results = [];
-  for (var i = 0; i < tab.length; i++) {
-    if (cond(tab[i]))
-      results.push(tab[i]);
-  }
-  return results;
+	results = [];
+	for (var i = 0; i < tab.length; i++) {
+	if (cond(tab[i]))
+		results.push(tab[i]);
+	}
+	return results;
 }
 
 var tab = [1, 2, 3, 4, 5];
