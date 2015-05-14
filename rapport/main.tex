@@ -347,6 +347,8 @@ Python also has some borrowed concepts from the functional world such as compreh
 
 These two pieces of code have the same result. It will return an array with element which are odd from the list \lstinline|[1,2,3,4,5]|. One of the most famous mottos in Python is “There should be one-- and preferably only one --obvious way to do it.” As we can see, we are able to do the same thing using two ways. In this case, the first piece of code is definitively better as it is easier to read.
 
+
+
 \subsection{JavaScript}
 \setjs
 
@@ -354,10 +356,18 @@ JavaScript is a dynamically typed language.
 JavaScript objects consists of associative arrays.
 The names (keys) of object properties are strings.
 The properties and their values can be added, changed, or deleted at run-time.
-There are seven JavaScript primitive Data types : \lstinline|Object|, \lstinline|Boolean|, \lstinline|String|, \lstinline|Number|, \lstinline|Symbol| (not yet standard, in ECMAScript 6 proposal).
-
-Among which two special ones :
+The first type in JavaScript is \lstinline[basicstyle=\small\ttfamily]|Object|.
+In addition, there are six JavaScript primitive \mbox{Data types :}
 \begin{description}
+\item[Boolean] \lstinline|true| and \lstinline|false|.
+
+\item[String] \lstinline|"This is a JS string"|
+
+\item[Number] \lstinline|42 or 3.14159|
+
+\item[Symbol] A data type whose instances are unique and immutable. \\
+			(not yet standard, in ECMAScript 6 proposal).
+
 \item[Undefined] variables without a value (or setting a variable to \lstinline|undefined|).
 \item[Null] a variable whose value is \lstinline|null| represents ``nothing''. To be consistent, the type of such a value should be Null. But the typeof a \lstinline|null| value is \lstinline|Object|. This is considered as a bug in JavaScript, but it is part of the ECMAScript language specification.
 \end{description}
@@ -472,6 +482,7 @@ coffee.syntax = function () {
 };
 \end{lstlisting}
 
+
 As of ECMAScript 5.1, there is no \lstinline|class|.
 The ECMAScript 6 proposal introduces a \lstinline|class| expression.
 
@@ -510,12 +521,12 @@ In JavaScript,
 \setjs
 \begin{lstlisting}
 var filter = function (tab, cond) {
-  results = [];
-  for (var i = 0; i < tab.length; i++) {
-    if (cond(tab[i]))
-      results.push(tab[i]);
-  }
-  return results;
+	results = [];
+	for (var i = 0; i < tab.length; i++) {
+	if (cond(tab[i]))
+		results.push(tab[i]);
+	}
+	return results;
 }
 
 var tab = [1, 2, 3, 4, 5];
@@ -891,11 +902,25 @@ That means that the system can be adapted at runtime, once it has been created a
 
 \subsubsection{Meta-object protocol}
 
-\todo{picture}
-
-The primitive data types in JavaScript are of type object.
+The primitive data types in JavaScript are of type object (i.e. \lstinline|Object|, \mbox{\lstinline|Boolean|,} \lstinline|String|, \lstinline|Number|, and \lstinline|Symbol|).
+% these are *not* instances of Object !
 Everything is object in JavaScript, even objects’ prototypes.
 Note that Functions are also objects.
+
+The prototype object that has been used to create the object can be referenced by using the \lstinline|__proto__| property.
+In the figure, the \lstinline|__proto__| property is used to link prototypes and to provide inheritance.
+% foo.__proto__ == Foo.prototype // true
+
+The \lstinline|prototype| property corresponds to the object that was used to build the actual object.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{jsobj_full.jpg}
+\end{figure}
+
+When the \lstinline|f1| object is created (with the \lstinline|new| keyword), its \textit{internal} \lstinline|__proto__| refers to the prototype of the \lstinline|Foo| function.
+Therefore, \lstinline|Foo.prototype| \textit{inherits} from the prototype of \lstinline|Object|.
+The \lstinline|__proto__| property can be used to provide \textit{inheritance} of properties.
 
 
 \subsubsection{Limitations of the reflective features}
