@@ -545,7 +545,7 @@ console.log(filter(tab, cond)); // [2, 4]
 \setpy{}
 Python is a duck-typed language, it does not have a strong typing. The idea is that you do not need a type in order to invoke an existing method on an object. If a method is defined on it, you can invoke it.
 
-For example :
+For example (taken from wikipedia) :
 
 \begin{lstlisting}
 class Duck:
@@ -679,12 +679,11 @@ Also, we can create a class by using ``type'' : \lstinline|type('ClassName', (in
 
 \subsubsection{Kinds of reflection and meta-programming features}
 
-\textbf{Introspection}
-As we have seen, we can easily inspect and access representation of an object in Python with the method \lstinline|dir()|. We can also inspect locals and globals symbol tables via \lstinline|locals()| and \lstinline|globals()|.
+\begin{description}
+\item[Introspection] As we have seen, we can easily inspect and access representation of an object in Python with the method \lstinline|dir()|. We can also inspect locals and globals symbol tables via \lstinline|locals()| and \lstinline|globals()|.
 
-\textbf{Intercession}
-We have seen that we can add or replace an attribute (method or variable) in an object (remember that everything is object in python).
-
+\item[Intercession] We have seen that we can add or replace an attribute (method or variable) in an object (remember that everything is object in python).
+\end{description}
 
 \subsubsection{Meta-object protocol}
 
@@ -943,7 +942,7 @@ Contrarily to Ruby, there is no way to access instances of a constructor in Java
 
 \subsection{Reflective features}
 
-Both, Javascript and Python, are duck-typed languages. They both offer the same kind of reflective features but they don't rely on the same mechanism. In both languages, everything is object. but they both have different mechanism. Javascript is prototype-based and Python is class-based. In Javascript, you can inspect an object by calling \setjs \lstinline|Object.getOwnPropertyNames(objectToAnalyse)|. This will only show you what the object contain. As many methods are defined in Prototype in Javascript, you will have to inspect the attribute \lstinline|__proto__| of the object to retrieve some more methods of the object. But that will not be enough as Javascript rely on Prototype-chaining to find method name. So, you will have to explore the attribute \lstinline|__proto__| of \lstinline|__proto__|, and so on until there is no more \lstinline|__proto__| defined. \setpy As Python rely on class, the langage have a clean inheritance system. By calling \lstinline|dir(objectToAnalyse)|, it will retrieve for you all attributes that the object inherits by using the keys in the \lstinline|__dict__| attribute of the object. This is not possible in Javascript as there is no class and no inheritance. As we can see, both of these two languages can achieve the same  
+Both, Javascript and Python, are duck-typed languages. In both languages, everything is object. They both offer the same kind of reflective features but they don't rely on the same mechanism. Javascript is prototype-based and Python is class-based. In Javascript, you can inspect an object by calling \setjs \lstinline|Object.getOwnPropertyNames(objectToAnalyse)|. This will only show you what the object (dictionary) contains. As many methods are defined in Prototypes in Javascript, you will have to inspect the attribute \lstinline|__proto__| of the object to retrieve some more methods of the object. But that will not be enough as Javascript rely on Prototype-chaining to find method name. So, you will have to explore the attribute \lstinline|__proto__| of \lstinline|__proto__|, and so on until there is no more \lstinline|__proto__| defined. \setpy As Python rely on class, the langage have a clean inheritance system. By calling \lstinline|dir(objectToAnalyse)|, it will retrieve for you all attributes that the object inherits by using the keys in the \lstinline|__dict__| attribute of the object. This is not possible in Javascript as there is no class and no inheritance.  
 
 \subsection{Kinds of reflection}
 
