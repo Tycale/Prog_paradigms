@@ -647,7 +647,7 @@ When a method is like \lstinline|__this__|, it shouldn't be called. Because it m
 
 \textbf{Callable Object}
 
-Object in Python can be “callable” or not. A callable object is an object having a method named \lstinline|__call__()|. In fact, \lstinline|X(arg1, arg2, ...)| is a shorthand for \lstinline|X.__call__(arg1, arg2, ...)|. To know if an object is callable, we will use the method \lstinline|__getattr__('__call__')|.
+Object in Python can be “callable” or not. A callable object is an object having a method named \lstinline|__call__()|. In fact, \lstinline|X(arg1, arg2, ...)| is a shorthand for \mbox{\lstinline|X.__call__(arg1, arg2, ...)|.} To know if an object is callable, we will use the method \lstinline|__getattr__('__call__')|.
 
 \begin{lstlisting}
 >>> class ActingLikeAFunction:
@@ -659,7 +659,7 @@ Object in Python can be “callable” or not. A callable object is an object ha
 I look like a function
 \end{lstlisting}
 
-Also, we can create class by using ``type'' : \lstinline|type('ClassName', (inherited_class_1, inherited_class_2,) {key: value,})|. This allows us to create class. We can, then, add attributes or methods to this class.
+Also, we can create a class by using ``type'' : \lstinline|type('ClassName', (inherited_class_1, inherited_class_2, ...) {key: value,})|. Then, we can add attributes or methods to this class.
 
 \begin{lstlisting}
 >>> globals()['MyClass'] = type('MyClass', (), {'x': 1, 'y':2})
@@ -680,7 +680,7 @@ Also, we can create class by using ``type'' : \lstinline|type('ClassName', (inhe
 \subsubsection{Kinds of reflection and meta-programming features}
 
 \textbf{Introspection}
-As we have seen, we can easily inspect and access representation of an object in python with the method dir(). We can also inspect locals and globals symbol tables via locals() and globals().
+As we have seen, we can easily inspect and access representation of an object in Python with the method \lstinline|dir()|. We can also inspect locals and globals symbol tables via \lstinline|locals()| and \lstinline|globals()|.
 
 \textbf{Intercession}
 We have seen that we can add or replace an attribute (method or variable) in an object (remember that everything is object in python).
