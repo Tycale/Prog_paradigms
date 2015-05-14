@@ -596,7 +596,7 @@ Person.quack = b
 
 This piece of code change a method during the run-time. This practice is called monkey-patching. 
 
-Python gives us tools for introspecting class, the built-in function ‘dir’ gives the attributes (i.e. methods and class variable) of a class. For example :
+Python provides tools for introspecting class, the built-in function \lstinline|dir| gives the attributes (i.e. methods and class variable) of a class. For example :
 \begin{lstlisting}
 >>> dir(Person)
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'quack']
@@ -604,7 +604,7 @@ Python gives us tools for introspecting class, the built-in function ‘dir’ g
 
 The resulting list is not necessarily complete, and may be inaccurate. As this built-in function will rely on the method \lstinline|__getattr__()| of the object, we can define (or change on runtime) this method.
 
-We can inspect an object with dir, but we can also inspect a frame at runtime. For doing so, we can use built-in function \lstinline|locals()| and \lstinline|globals()|.
+We can inspect an object with \lstinline|dir|, but we can also inspect a frame at runtime. For doing so, we can use built-in function \lstinline|locals()| and \lstinline|globals()|.
 
 \begin{description}
 \item[locals()] returns a dictionary representing the current local symbol table.
@@ -623,27 +623,27 @@ A leading underscore is a weak ``internal use'' indicator. It it a little bit mo
 
 Two leading underscore is called ``name mangling''. It’s a strong “internal use” indicator. Any identifier of the form \lstinline|__spam| (at least two leading underscores) is textually replaced with \lstinline|_classname__spam|, where classname is the current class name with leading underscores stripped. This “mangling rule” is designed mostly to avoid accidents; it still is possible for a determined soul to access or modify a variable that is considered private.
 
-\textbf{Two leading underscore and two ending underscore}
-
-When we see a method like \lstinline|__this__|, don't call it. Because it means it's a method which python calls, not by you. There is always an operator or native function which calls these magic methods. Sometimes it's just a hook python calls in specific situations. For example \lstinline|__init__()| is called when the object is created. \lstinline|__new__()| is called to build the instance...
-
 \begin{lstlisting}
->>> class M:
+>>> class MyClass:
 ...   def __init__(self, *args, **kwargs):
-...     self._secret1 = 0
-...     self.__secret2 = 0
+...     self._secret1 = 0 # One leading underscore
+...     self.__secret2 = 0 # Two leading underscore
 ...
 >>>
->>> a = M()
+>>> a = MyClass()
 >>> a._secret1
 0
 >>> a.__secret2
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-AttributeError: M instance has no attribute '__secret2'
+AttributeError: MyClass instance has no attribute '__secret2'
 >>> a._M__secret2
 0
 \end{lstlisting}
+
+\textbf{Two leading underscore and two ending underscore}
+
+When a method is like \lstinline|__this__|, it shouldn't be called. Because it means it's a method which Python calls, and the developer should not call it. There is always an operator or native function which calls these magic methods. Sometimes it's just a hook Python that calls in specific situations. For example, \lstinline|__init__()| is called when the object is created. \lstinline|__new__()| is called to build the instance.
 
 \textbf{Callable Object}
 
