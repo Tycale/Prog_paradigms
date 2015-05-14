@@ -594,7 +594,7 @@ Person.quack = b
 \end{lstlisting}
 
 
-This practice is called monkey-patching. We can use it to change a function in run-time.
+This piece of code change a method during the run-time. This practice is called monkey-patching. 
 
 Python provides tools for introspecting class, the built-in function \lstinline|dir| gives the attributes (i.e. methods and class variable) of a class. For example :
 \begin{lstlisting}
@@ -623,27 +623,27 @@ A leading underscore is a weak ``internal use'' indicator. It it a little bit mo
 
 Two leading underscore is called ``name mangling''. It’s a strong “internal use” indicator. Any identifier of the form \lstinline|__spam| (at least two leading underscores) is textually replaced with \lstinline|_classname__spam|, where classname is the current class name with leading underscores stripped. This “mangling rule” is designed mostly to avoid accidents; it still is possible for a determined soul to access or modify a variable that is considered private.
 
-\textbf{Two leading underscore and two ending underscore}
-
-When a method is like \lstinline|__this__|, it shouldn't be called. Because it means it's a method which Python calls, and the developer should not call it. There is always an operator or native function which calls these magic methods. Sometimes it's just a hook Python that calls in specific situations. For example, \lstinline|__init__()| is called when the object is created. \lstinline|__new__()| is called to build the instance...
-
 \begin{lstlisting}
->>> class M:
+>>> class MyClass:
 ...   def __init__(self, *args, **kwargs):
-...     self._secret1 = 0
-...     self.__secret2 = 0
+...     self._secret1 = 0 # One leading underscore
+...     self.__secret2 = 0 # Two leading underscore
 ...
 >>>
->>> a = M()
+>>> a = MyClass()
 >>> a._secret1
 0
 >>> a.__secret2
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-AttributeError: M instance has no attribute '__secret2'
+AttributeError: MyClass instance has no attribute '__secret2'
 >>> a._M__secret2
 0
 \end{lstlisting}
+
+\textbf{Two leading underscore and two ending underscore}
+
+When a method is like \lstinline|__this__|, it shouldn't be called. Because it means it's a method which Python calls, and the developer should not call it. There is always an operator or native function which calls these magic methods. Sometimes it's just a hook Python that calls in specific situations. For example, \lstinline|__init__()| is called when the object is created. \lstinline|__new__()| is called to build the instance.
 
 \textbf{Callable Object}
 
