@@ -17,6 +17,7 @@
 \usepackage{extramarks} % Required for headers and footers
 \usepackage{mathtools}
 \usepackage{color}
+\usepackage{todonotes}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -35,8 +36,8 @@
 \headsep=0.25in
 \headheight=13pt
 % Set up the header and footer
-\pagestyle{empty}
-\rhead{\firstxmark} 
+%\pagestyle{empty}
+\rhead{\firstxmark}
  % Top right header
 \lfoot{\lastxmark} % Bottom left footer
 \cfoot{} % Bottom center footer
@@ -51,16 +52,16 @@
 
 %\hypersetup{pageanchor=false}
 \definecolor{lightyellow}{HTML}{FFFBEF}
-   
+
 \begin{titlepage}
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \includegraphics[width=6cm,height=1.9cm]{images/Logo_EPL.jpg}
-\hfill 
+\hfill
 \includegraphics[width=3.3 cm,height=2.2 cm]{images/ucl.jpg}
 %Defines a new command for the horizontal lines, change thickness here
 
 \centering % Center everything on the page
- 
+
 %	HEADING SECTIONS
 \null
 \vspace{4 cm}
@@ -69,18 +70,19 @@
 
 \HRule \\[0.9cm]
 
-{ {\LARGE LSINF2335 Programming paradigms}\\[0.4cm]
+{ {\LARGE LSINF2335 - Programming paradigms}\\[0.4cm]
 
-\huge \textbf{Assignment} \\[0.6 cm]
+\huge \textbf{Report} \\[0.6 cm]
 % Title of your document
-{\LARGE \textit{Comparing Python and JavaScript : \\Reflection and meta-programming } }}
+{\LARGE \textsc{A Comparison of \\ Reflection \& Meta-programming \\
+in \\
+Python and JavaScript} }}
 \\[0.9cm]
-\HRule \\[3cm]
- 
+\HRule \\[2cm]
+
 \Large {
 
-\begin{tabular}{rl} 
-
+\begin{tabular}{rl}
 \multicolumn{2}{c}{\textbf{Group 1}}  \\[0.3 cm]
 \textsc{Gerondal} & Thibault  \\
 \textsc{Heraly } & Michaël \\
@@ -88,7 +90,7 @@
 
 
 \end{tabular}}
-\\[2cm]
+\\[1.8cm]
 
 
 %	DATE SECTION
@@ -113,41 +115,28 @@
 %	TEXT
 %----------------------------------------------------------------------------------------
 
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, for, true, false, catch, function, return, null, Array, Regexp, catch, switch, var, if, in, while, do, else, case, break},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
-
 \newcommand{\setjs}{
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, for, true, false, catch, function, return, null, Array, Regexp, catch, switch, var, if, in, while, do, else, case, break},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
+    \lstdefinelanguage{JavaScript}{
+      keywords={typeof, new, for, true, false, catch, function, return, null, Array, Regexp, catch, switch, var, if, in, while, do, else, case, break, this},
+      keywordstyle=\color{blue}\bfseries,
+      ndkeywords={class, export, throw, implements, import, this},
+      ndkeywordstyle=\color{darkgray}\bfseries,
+      identifierstyle=\color{black},
+      %sensitive=false,
+      comment=[l]{//},
+      morecomment=[s]{/*}{*/},
+      commentstyle=\color{mygreen}\ttfamily,
+      stringstyle=\color{red}\ttfamily,
+      morestring=[b]',
+      morestring=[b]",
+      tabsize=4,
+    }
+    \lstset{language=JavaScript}
 }
-\lstset{language=JavaScript}}
 \newcommand{\setpy}{\lstset{language=Python}
 \lstset{ %
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
   captionpos=b,                    % sets the caption-position to bottom
@@ -159,7 +148,7 @@
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
   language=Octave,                 % the language of the code
-  otherkeywords={*,...},            % if you want to add more keywords to the set
+  otherkeywords={*,\%,...},            % if you want to add more keywords to the set
   %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
   numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
@@ -222,20 +211,20 @@ Both languages have evolved in very different contexts. Python has always been m
 
 Nowadays, JavaScript is widely used on every website and is even used for running website servers (with popular frameworks like Nodejs, Meteorjs, \dots). Python has also become one of the most used languages for multiple purposes : from scripting up to making complete applications. Both of them are still growing, evolving and becoming increasingly used.
 
-The large success of these languages is partly due to the various libraries simplifying  programmers' life. Some libraries greatly benefit from meta-programming that allows them to easily extend the behavior of a language in order to make their use much easier and more natural. 
+The large success of these languages is partly due to the various libraries simplifying  programmers' life. Some libraries greatly benefit from meta-programming that allows them to easily extend the behavior of a language in order to make their use much easier and more natural.
 
-It makes sense to compare Python and JavaScript, because they share the same programming paradigms : functional, object-oriented, and imperative. However, these languages both have their own specifics. 
+It makes sense to compare Python and JavaScript, because they share the same programming paradigms : functional, object-oriented, and imperative. However, these languages both have their own specifics.
 
 In the following sections, we are going to give you a brief introduction to the core syntax, semantics and concepts of those languages.
 
 \subsection{Python}
 \setpy
 
-Python is an imperative language where everything is object. 
-There are a lot of built-in types, here is a non-exhaustive list of the most used ones: \lstinline{int}, \lstinline{bool}, \lstinline{str}, \lstinline{float}, \lstinline{long}, \lstinline{tuple}, \lstinline{list}, \lstinline{dict}, \lstinline{set}. 
+Python is an imperative language where everything is object.
+There are a lot of built-in types, here is a non-exhaustive list of the most used ones: \lstinline{int}, \lstinline{bool}, \lstinline{str}, \lstinline{float}, \lstinline{long}, \lstinline{tuple}, \lstinline{list}, \lstinline{dict}, \lstinline{set}.
 Since everything is object, there is a class for all of these types which is called \lstinline{type}.
-There is also the special type (object) \lstinline{None} which belongs to \lstinline{NoneType} (which belongs to \lstinline{type}). 
-None is frequently used to represent the absence of a value, as when default arguments are not passed to a function. 
+There is also the special type (object) \lstinline{None} which belongs to \lstinline{NoneType} (which belongs to \lstinline{type}).
+None is frequently used to represent the absence of a value, as when default arguments are not passed to a function.
 There are also two widely used built-in constants who are \lstinline{True} and \lstinline{False}, that belong to the type \lstinline{bool}. Assignments to \lstinline{None}, \lstinline{True} and \lstinline{False} are illegal and raise a SyntaxError.
 
 For example,
@@ -256,7 +245,7 @@ As you can see, ‘list’ and ‘tuple’ can store multiple values. The main d
 
 The syntax in Python has no braces to indicate blocks of code for class, function definitions or flow control. Blocks of code are denoted by line indentation. The number of spaces in the indentation is variable, but all statements within the block must be indented the same amount. Some developers use tab as indentation but it is a bad practice according to PEP8 (Style Guide for Python Code).
 
-The following code shows an example of how blocks of code are defined in Python :
+The following code shows an example of how blocks of code are defined in \mbox{Python :}
 
 \begin{lstlisting}
 array = [1, 2, 3, 4, 5]
@@ -345,7 +334,7 @@ class Pinocchio(Marionette, Wood): # inheritance from Marionette and Wood
     pass
 \end{lstlisting}
 
-Pinocchio will inherit the methods \lstinline|dance| and \lstinline|burn|. 
+Pinocchio will inherit the methods \lstinline|dance| and \lstinline|burn|.
 
 Python also has some borrowed concepts from the functional world such as comprehension lists and lambda functions (also called anonymous functions) :
 
@@ -365,9 +354,9 @@ JavaScript is a dynamically typed language.
 JavaScript objects consists of associative arrays.
 The names (keys) of object properties are strings.
 The properties and their values can be added, changed, or deleted at run-time.
-There are seven JavaScript primitive Data types : \lstinline|Object|, \lstinline|Boolean|, \lstinline|String|, \lstinline|Number|, \lstinline|Symbol| (not yet standard, in ECMAScript 6 proposal). 
+There are seven JavaScript primitive Data types : \lstinline|Object|, \lstinline|Boolean|, \lstinline|String|, \lstinline|Number|, \lstinline|Symbol| (not yet standard, in ECMAScript 6 proposal).
 
-Among which two special ones : 
+Among which two special ones :
 \begin{description}
 \item[Undefined] variables without a value (or setting a variable to \lstinline|undefined|).
 \item[Null] a variable whose value is \lstinline|null| represents ``nothing''. To be consistent, the type of such a value should be Null. But the typeof a \lstinline|null| value is \lstinline|Object|. This is considered as a bug in JavaScript, but it is part of the ECMAScript language specification.
@@ -375,13 +364,13 @@ Among which two special ones :
 
 There are also built-in types (which are not primitive data types) : \lstinline|Array|, \lstinline|Function|, \lstinline|RegExp|.
 
-To declare a variable, the var keyword must be used.
-If the variable is not declared (using var) before being assigned, its scope is global.
+To declare a variable, the \lstinline|var| keyword must be used.
+If the variable is not declared (using \lstinline|var|) before being assigned, its scope is global.
 
 \begin{lstlisting}
 function f() {
-  var x = 42; // only accessible within the scope of the function
-  y = 90; // global
+	var x = 42; // only accessible within the scope of the function
+	y = 90; // global
 }
 \end{lstlisting}
 
@@ -391,9 +380,9 @@ It is recommended to always declare variables, regardless of whether they are in
 Creating an object :
 \begin{lstlisting}
 var myobj = {
-  key1: value1,
-  key2: value2,
-  ...
+	key1: value1,
+	key2: value2,
+	...
 };
 \end{lstlisting}
 
@@ -419,7 +408,7 @@ function name([param, [...]]) {
 \end{minipage} \hfill
 \begin{minipage}[c]{.5\linewidth}
    \begin{lstlisting}[title=Anonymous function,captionpos=t]
-var name = 
+var name =
    function([param, [...]]) {
       [statements]
    }
@@ -457,16 +446,16 @@ while (condition) {
 \end{lstlisting}
 
 
-The \lstinline|this| keyword has a different behaviour than in most other programming languages. 
+The \lstinline|this| keyword has a different behaviour than in most other programming languages.
 Its value is determined by how a function is called.
 
 If the enclosing function is an object method, \lstinline|this| corresponds to the object the method is called on. This is also true for methods defined on the object’s prototype chain. When a function is used as a constructor (with the \lstinline|new| keyword), \lstinline|this| is bound to new objects being constructed.
 
 Otherwise, if it is used in the global execution context (outside of any function), \lstinline|this| refers to the global object.
 
-The bind method can be used to set the value of a function's this regardless of how it's called (c.f. the reflection part for explanations).
+The bind method can be used to set the value of a function's \lstinline|this| regardless of how it's called (c.f. reflection part \ref{bind} for explanations).
 
-Custom object types can be defined using the new keyword.
+Custom object types can be defined using the \lstinline|new| keyword.
 \begin{lstlisting}
 function Language (name) {
     this.name = name;
@@ -488,10 +477,10 @@ The ECMAScript 6 proposal introduces a \lstinline|class| expression.
 
 \begin{lstlisting}
 var Foo = class {
-  constructor() {}
-  bar() {
-   return "Hello World!";
-  }
+	constructor() {}
+	bar() {
+		return "Hello World!";
+	}
 };
 
 var instance = new Foo();
@@ -500,9 +489,9 @@ instance.bar(); // "Hello World!"
 
 
 \subsection{Give an illustrative working code example of a typical program written in each of those languages}
-We choosed to create a filter method from scratch to filter only odd numbers of a list.
+We chose to create a filter method to get only the odd numbers of a list.
 
-In python,
+In Python,
 \setpy
 \begin{lstlisting}
 def filter(tab, cond):
@@ -536,13 +525,16 @@ var cond = function (num) {
 console.log(filter(tab, cond)); // [2, 4]
 \end{lstlisting}
 
+
+
+
 \section{Reflection and meta-programming}
 
 \subsection{Python}
 \setpy{}
 \subsubsection{Languages features for dealing with reflection and meta-programming}
 \setpy{}
-Python is a duck-typed language, it does not have a strong typing. The idea is that you do not need a type in order to invoke an existing method on an object. If a method is defined on it, you can invoke it. 
+Python is a duck-typed language, it does not have a strong typing. The idea is that you do not need a type in order to invoke an existing method on an object. If a method is defined on it, you can invoke it.
 
 For example :
 
@@ -550,7 +542,7 @@ For example :
 class Duck:
     def quack(self):
         print('Quack, quack!')
- 
+
 class Person:
     def quack(self):
         print('I\'m Quackin\'!')
@@ -576,7 +568,7 @@ Although Python is duck -typed, it is possible to check the type of a class via 
 
 These methods exist and are useful but the philosophy of Python and duck-typing is to avoid using them and just call the method. If there is a risk of failure, Python gives us an appropriate exception to handle this situation : \lstinline|AttributeError| and \lstinline|TypeError|. AttributeError is triggered when the object does not have the supposed method (e.g. \lstinline|in_the_forest(5)|). TypeError is raised when an operation or function is applied to an object of inappropriate type (the associated value is a string giving details about the type of mismatch) (e.g. \lstinline|5 + 'a'|).
 
-As said before, in Python, everything is object and all objects are "first class". By “first class”, we mean that all objects that can be named in the language (e.g., integers, strings, functions, classes, modules, methods, etc.) have equal status. This definition was designed by Guido Van Rossum, creator of Python. This means that every object can be assigned to variables, placed in lists, stored in dictionaries, passed as arguments, and so on. 
+As said before, in Python, everything is object and all objects are "first class". By “first class”, we mean that all objects that can be named in the language (e.g., integers, strings, functions, classes, modules, methods, etc.) have equal status. This definition was designed by Guido Van Rossum, creator of Python. This means that every object can be assigned to variables, placed in lists, stored in dictionaries, passed as arguments, and so on.
 
 So function and methods are also first class, as we can check :
 \begin{lstlisting}
@@ -615,7 +607,7 @@ For example, we can call a function with \lstinline|globals()['function_name'](a
 \subsubsection{Kinds of reflection and meta-programming features}
 
 \textbf{Introspection}
-As we have seen, we can easily inspect and access representation of an object in python with the method dir(). We can also inspect locals and globals symbol tables via locals() and globals(). We have seen that we can do monkey-patching to add or replace an attribute in an object (remember that everything is object in python). 
+As we have seen, we can easily inspect and access representation of an object in python with the method dir(). We can also inspect locals and globals symbol tables via locals() and globals(). We have seen that we can do monkey-patching to add or replace an attribute in an object (remember that everything is object in python).
 
 \textbf{Intercession}
 
@@ -646,13 +638,14 @@ As seen before, in Python, everything is object and every object is first-class.
 \end{minipage} \hfill
 \begin{minipage}[c]{.48\linewidth}
 \includegraphics[height=4cm]{typesmap.png}
-\end{minipage} 
+\end{minipage}
 
-In Python, there is no way to prevent a class to modify another. However, attribute's name can be used to prevent and alert other programmes that an attribute or method is intended to be private.
+In Python, there is no way to prevent a class to modify another. However, attribute's name can be used to prevent and alert other programs that an attribute or method is intended to be private.
 
 \textbf{One leading underscore}
+\todo{OK, mais ça devrait être dans une autre section que MOP}
 
-A leading underscore indicate is weak ``internal use'' indicator. It it a little bit more than just a naming convention because when we import all attributes of a class through the wildcard ``*'' (e.g. \lstinline|from X import *|), these ``internal use'' attributes will not be imported.
+A leading underscore is a weak ``internal use'' indicator. It it a little bit more than just a naming convention because when we import all attributes of a class through the wildcard ``\lstinline|*|'' (e.g. \lstinline|from X import *|), these ``internal use'' attributes will not be imported.
 
 \textbf{Two leading underscore}
 
@@ -676,7 +669,7 @@ When we see a method like \lstinline|__this__|, don't call it. Because it means 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: M instance has no attribute '__secret2'
->>> a._M__secret2 
+>>> a._M__secret2
 0
 \end{lstlisting}
 
@@ -684,16 +677,212 @@ AttributeError: M instance has no attribute '__secret2'
 
 Object in Python can be “callable” or not. A callable object is an object having a method named \lstinline|__call__()|. In fact, \lstinline|X(arg1, arg2, ...)| is a shorthand for \lstinline|X.__call__(arg1, arg2, ...)|. To know if an object is callable, we will use the method \lstinline|__getattr__('__call__')|.
 
+
 \subsubsection{Limitations of the reflective features}
 
+\todo[inline]{TODO}
+
+
+
+\newpage
 \subsection{JavaScript}
+
 \setjs
 \subsubsection{Languages features for dealing with reflection and meta-programming}
 
+Different informations about the type of an object \lstinline|custom| can be found in JavaScript :
+\begin{itemize}
+\item The primitive data type of an object can be found using the \lstinline|typeof| operator (e.g. \lstinline|typeof custom // "object"|)
+
+\item To access the function that created the object, the \lstinline|custom.constructor| instruction can be used. (e.g. \lstinline|custom.constructor // function CustomObject()|)
+
+\item The \lstinline|instanceof| operator allows to check if an object is an instance of a particular constructor (or has this constructor in its prototype chain). \\
+		Example: \\
+		\lstinline|custom instanceof CustomObject // true| \\
+		\lstinline|custom instanceof Object // true|
+
+		\smallskip
+		N.B. objects created from primitive data type are considered as instances of \lstinline|Object| : \\
+		\lstinline|new Boolean() instanceof Object; // true| \\
+		\lstinline|new String() instanceof Object; // true| \\
+		\lstinline|new Number() instanceof Object; // true| \\
+\end{itemize}
+
+
+\paragraph{Undefined object}{
+In the case of an \lstinline|undefined| object, only the primitive data type can be retrieved (i.e. \lstinline|typeof undefined // "undefined"|), as the \lstinline|Undefined| constructor is not defined, and an \lstinline|undefined| object has no properties.
+}
+
+
+\paragraph{Object properties}{
+It is possible to get the own properties of the object \lstinline|s| by calling \lstinline|Object.getOwnPropertyNames(s)|. \\
+Example:
+\begin{lstlisting}
+function Song (artist, title) {
+    this.title  = title;
+    this.artist = artist;
+    this.display = function() {
+        return artist+" - "+title;
+    }
+}
+var s = new Song("Mark Knopfler", "What It Is");
+print(Object.getOwnPropertyNames(s));
+// Array ["title", "artist", "display"]
+\end{lstlisting}
+}
+
+
+There is no built-in feature to get the methods of an object (as of ECMAScript 5.1). But it can be achieved by the following function :
+\begin{lstlisting}
+var getMethodNames = function(obj) {
+    var methods = [];
+    for (var i in obj) {
+        if (obj[i] instanceof Function) {
+            methods.push(i);
+        }
+    }
+    return methods;
+}
+getMethodNames(s); // Array ["display"]
+\end{lstlisting}
+
+
+There are two ways to get the prototype of an object :
+\begin{lstlisting}
+Object.getPrototypeOf(s); // standard way
+s.__proto__;
+\end{lstlisting}
+
+
+The prototype properties of a constructor can be accessed this way :
+\begin{lstlisting}
+Song.prototype.genre = "rock";
+Song.prototype; // Object { genre: "rock", constructor: Song() }
+\end{lstlisting}
+
+It can also be retrieved from an object :
+\begin{lstlisting}
+s.constructor.prototype; // Object { genre: "rock", constructor: Song() }
+\end{lstlisting}
+
+So now, the object s has a field \lstinline|genre| :
+\begin{lstlisting}
+s.genre; // "rock"
+\end{lstlisting}
+
+JavaScript proceeds method lookup in the following order :
+\begin{enumerate}
+\item in the object itself;
+\item following the prototype chain.
+\end{enumerate}
+
+
+\bigskip
+JavaScript allows to define object properties reflectively :
+\begin{lstlisting}
+Object.getOwnPropertyNames(s);
+// Array ["title", "artist", "display"]
+s.hasOwnProperty("album"); // false
+s.album = "Sailing to Philadelphia";
+Object.getOwnPropertyNames(s);
+// Array ["title", "artist", "display", "album"]
+s.hasOwnProperty("album"); // true
+s.album; // "Sailing to Philadelphia"
+\end{lstlisting}
+
+It is also possible to set object properties :
+\begin{lstlisting}
+s.title = "Why Worry";
+s.album = "Brother In Arms";
+\end{lstlisting}
+
+
+\medskip
+\label{bind}
+The \lstinline|bind| method creates a new function which, when called, has its \lstinline|this| keyword set to the provided value. \\
+Example (taken from the MDN) : \\
+\begin{lstlisting}
+this.x = 9;
+var module = {
+	x: 81,
+	getX: function() { return this.x; }
+};
+
+module.getX(); // 81
+
+var getX = module.getX;
+getX(); // 9, because in this case, "this" refers to the global object
+
+// Create a new function with 'this' bound to module
+var boundGetX = getX.bind(module);
+boundGetX(); // 81
+\end{lstlisting}
+
+As in JavaScript the value of this is determined by how a function is called, the \lstinline|bind| method is useful to set the value of a function’s \lstinline|this|, regardless of how it is called.
+It is particularly useful when making AJAX requests.
+
+
+The ECMAScript 6 proposal brings the \lstinline|Proxy| object.
+It allows to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc).
+But it is not yet implemented in web browsers as of this writing. \\
+Example (taken from the MDN) : \\
+\begin{lstlisting}
+var handler = {
+    // Return 37 if 'name' is not in target
+    get: function(target, name){
+        return name in target?
+            target[name] :
+            37;
+    }
+};
+
+var p = new Proxy({}, handler); // new Proxy(target, handler)
+p.a = 1;
+p.b = undefined;
+
+console.log(p.a, p.b); // 1, undefined
+console.log('c' in p, p.c); // false, 37
+\end{lstlisting}
+
+
+
 \subsubsection{Kinds of reflection and meta-programming features}
+
+JavaScript allows different kinds of reflection features :
+\begin{itemize}
+    \item Introspection : looking at the reified entities.
+    \item Intercession : changing the program behaviour by manipulating the reified entities.
+\end{itemize}
+
+As JavaScript is an interpreted language, it proceeds runtime reflection.
+That means that the system can be adapted at runtime, once it has been created and run.
+
+
 
 \subsubsection{Meta-object protocol}
 
+\todo{picture}
+
+The primitive data types in JavaScript are of type object.
+Everything is object in JavaScript, even objects’ prototypes.
+Note that Functions are also objects.
+
+
 \subsubsection{Limitations of the reflective features}
+
+In JavaScript, object properties can be deleted, but not the objects themselves.
+Contrarily to Ruby, there is no way to access instances of a constructor in JavaScript.
+
+
+
+
+\newpage
+\section{Comparing the languages}
+
+
+
+\section{Bibliography}
+\todo[inline]{Bibliography}
+
 
 \end{document}
