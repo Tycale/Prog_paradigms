@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
-%\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+%\usepackage[top=2.5cm,bottom=2.5cm,left=4cm,right=4cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
 %\usepackage[table,xcdraw]{xcolor}
@@ -602,7 +602,7 @@ Python provides tools for introspecting class, the built-in function \lstinline|
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'quack']
 \end{lstlisting}
 
-The resulting list is not necessarily complete, and may be inaccurate. As this built-in function will rely on the method \lstinline|__getattr__()| of the object, we can define (or change on runtime) this method.
+The resulting list is not necessarily complete, and may be inaccurate. As this built-in function will rely on the keys in \lstinline|__dict__| and on the method \lstinline|__getattr__()| of the object, we can define (or change at runtime) these attributes.
 
 We can inspect an object with \lstinline|dir|, but we can also inspect a frame at runtime. For doing so, we can use built-in function \lstinline|locals()| and \lstinline|globals()|.
 
@@ -683,9 +683,8 @@ Also, we can create class by using ``type'' : \lstinline|type('ClassName', (inhe
 As we have seen, we can easily inspect and access representation of an object in python with the method dir(). We can also inspect locals and globals symbol tables via locals() and globals().
 
 \textbf{Intercession}
-We have seen that we can add or replace an attribute (methods or ) in an object (remember that everything is object in python).
+We have seen that we can add or replace an attribute (method or variable) in an object (remember that everything is object in python).
 
-% Parler de monkey-patching et de meta-class
 
 \subsubsection{Meta-object protocol}
 
@@ -944,8 +943,7 @@ Contrarily to Ruby, there is no way to access instances of a constructor in Java
 
 \subsection{Reflective features}
 
-JavaScript offers more features.
-
+Both, Javascript and Python, are duck-typed languages. They both offer the same kind of reflective features but they don't rely on the same mechanism. In both languages, everything is object. but they both have different mechanism. Javascript is prototype-based and Python is class-based. In Javascript, you can inspect an object by calling \setjs \lstinline|Object.getOwnPropertyNames(objectToAnalyse)|. This will only show you what the object contain. As many methods are defined in Prototype in Javascript, you will have to inspect the attribute \lstinline|__proto__| of the object to retrieve some more methods of the object. But that will not be enough as Javascript rely on Prototype-chaining to find method name. So, you will have to explore the attribute \lstinline|__proto__| of \lstinline|__proto__|, and so on until there is no more \lstinline|__proto__| defined. \setpy As Python rely on class, the langage have a clean inheritance system. By calling \lstinline|dir(objectToAnalyse)|, it will retrieve for you all attributes that the object inherits by using the keys in the \lstinline|__dict__| attribute of the object. This is not possible in Javascript as there is no class and no inheritance. As we can see, both of these two languages can achieve the same  
 
 \subsection{Kinds of reflection}
 
