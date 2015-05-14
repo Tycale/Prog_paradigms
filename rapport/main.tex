@@ -594,7 +594,7 @@ Person.quack = b
 \end{lstlisting}
 
 
-This practice is called monkey-patching. We can use it to change a function in run-time.
+This piece of code change a method during the run-time. This practice is called monkey-patching. 
 
 Python gives us tools for introspecting class, the built-in function ‘dir’ gives the attributes (i.e. methods and class variable) of a class. For example :
 \begin{lstlisting}
@@ -604,7 +604,7 @@ Python gives us tools for introspecting class, the built-in function ‘dir’ g
 
 The resulting list is not necessarily complete, and may be inaccurate. As this built-in function will rely on the method \lstinline|__getattr__()| of the object, we can define (or change on runtime) this method.
 
-We can inspect an object with dir, but we can also inspect a frame on the runtime. For doing so, we can use built-in function \lstinline|locals()| and \lstinline|globals()|.
+We can inspect an object with dir, but we can also inspect a frame at runtime. For doing so, we can use built-in function \lstinline|locals()| and \lstinline|globals()|.
 
 \begin{description}
 \item[locals()] returns a dictionary representing the current local symbol table.
