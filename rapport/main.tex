@@ -18,6 +18,7 @@
 \usepackage{mathtools}
 \usepackage{color}
 \usepackage{todonotes}
+\usepackage{url}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -587,7 +588,7 @@ in_the_forest(a) # => Quack, quack!
 in_the_forest(b) # => I'm Quackin'!
 \end{lstlisting}
 
-Duck typing is useful for defining new classes that can take place in an existing system without having to implement or inherit useless methods from another class. For example, in Python, if you have a library that asks a “File” object as parameter, you can pass a string via the  “cStringIO” class. This class will mimic the behavior of the File class. The name of the concept refers to the duck test, attributed to James Whitcomb Riley, which may be phrased as follows: “When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.”
+Duck typing is useful for defining new classes that can take place in an existing system without having to implement or inherit useless methods from another class. For example, in Python, if you have a library that asks a “File” object as parameter, you can pass a string via the  “cStringIO” class. This class will mimic the behavior of the File class. The name of the concept refers to the duck test, attributed to James Whitcomb Riley, which may be phrased as follows: “When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.” \cite{ wiki:duck}
 
 It is possible to check the type of a class via the built-in function \lstinline|type|.
 We can also check if a class has an attribute via the built-in function \lstinline|hasattr|.
@@ -605,7 +606,7 @@ If there is a risk of failure, Python provides an appropriate exception to handl
 
 In Python, everything is object and all objects are ``first class''.
 It means that all objects that can be named in the language (e.g., integers, strings, functions, classes, modules, methods, etc.) have equal status.
-This definition was designed by Guido Van Rossum, creator of Python.
+This definition was designed by Guido Van Rossum, creator of Python \cite{ wiki:python}.
 This means that every object can be assigned to variables, placed in lists, stored in dictionaries, passed as arguments, and so on.
 
 This principle enables us to define and redefine functions and methods simply. For example, we can do the following hack :
@@ -800,6 +801,8 @@ As seen before, in Python, everything is object and every object is first-class.
 \begin{minipage}[c]{.48\linewidth}
 \includegraphics[height=4cm]{typesmap.png}
 \end{minipage}
+
+All objects defined by the user inherit of ``object''.
 
 \subsubsection{Limitations of the reflective features}
 
@@ -1069,7 +1072,9 @@ JavaScript has a weaker API for reflection and meta-programming than Python. But
 * 
 
 \section{Bibliography}
-\todo[inline]{Bibliography}
 
+
+\bibliographystyle{abbrv}
+\bibliography{bibli}
 
 \end{document}
