@@ -200,18 +200,28 @@ Python and JavaScript} }}
 
 \subsection{What programming languages have you chosen to compare ?}
 
-We chose to compare Python \& JavaScript, both support reflection and meta-programming.
+We chose to compare Python \& JavaScript, as both support reflection and meta-programming.
 We focused on these programming languages because of their popularity.
 
-These two languages don’t have the same purpose, so it could seem strange to compare them. On the one hand, JavaScript was born in the 90s out of a need to make web pages dynamic . On the other hand, Python was conceived in the late 1980s as a programming language capable of exception handling.
+These two languages do not have the same purpose, so it could seem strange to compare them.
+On one hand, JavaScript was born in the 90s out of a need to make web pages dynamic.
+On the other hand, Python was conceived in the late 1980s as a programming language capable of exception handling.
 
-Both languages have evolved in very different contexts. Python has always been maturely considered and debated during its development cycles; while JavaScript has long been considered as a language whose sole purpose was to boost internet pages. Therefore, it was much less standardized and the standard was not always respected. Microsoft and Netscape maintained separate languages for their browser. Given the competition between the two browsers, the JavaScript language largely developed in the context of war of performance and functionality.
+Both languages have evolved in very different contexts.
+Python has always been maturely considered and debated during its development cycles; while JavaScript has long been considered as a language whose sole purpose was to boost internet pages.
+Therefore, it was much less standardized and the standard was not always respected.
+Microsoft and Netscape maintained separate languages for their browser.
+Given the competition between the two browsers, the JavaScript language largely developed in the context of war of performance and functionality.
 
-Nowadays, JavaScript is widely used on every website and is even used for running website servers (with popular frameworks like Nodejs, Meteorjs, \dots). Python has also become one of the most used languages for multiple purposes : from scripting up to making complete applications. Both of them are still growing, evolving and becoming increasingly used.
+Nowadays, JavaScript is widely used on most websites and is even used for running web servers (with popular frameworks like Nodejs, Meteorjs, \dots).
+Python has also become one of the most used languages for multiple purposes : from scripting up to making complete applications.
+Both of them are still growing, evolving and becoming increasingly used.
 
-The large success of these languages is partly due to the various libraries simplifying  programmers' life. Some libraries greatly benefit from meta-programming that allows them to easily extend the behavior of a language in order to make their use much easier and more natural.
+The large success of these languages is partly due to the various libraries simplifying  programmers' life.
+Some libraries greatly benefit from meta-programming that allows them to easily extend the behavior of a language in order to make their use much easier and more natural.
 
-It makes sense to compare Python and JavaScript, because they share the same programming paradigms : functional, object-oriented, and imperative. However, these languages both have their own specifics.
+It makes sense to compare Python and JavaScript, because they share the same programming paradigms : functional, object-oriented, and imperative.
+However, these languages both have their own specificities.
 
 In the following sections, we are going to give you a brief introduction to the core syntax, semantics and concepts of those languages.
 
@@ -237,11 +247,18 @@ For example,
 >>> type(type((1,2,3))) #=> <class 'type'>
 \end{lstlisting}
 
-A hash sign (\#) that is not inside a string literal begins a comment. All characters after the \# and up to the physical line end are part of the comment and the Python interpreter ignores them. We use them here to show the expected result.
+A hash sign (\#) that is not inside a string literal marks the beginning of a comment.
+All characters after the \# and up to the line end are part of the comment and the Python interpreter ignores them.
+We use them here to show the expected result.
 
-As you can see, ‘list’ and ‘tuple’ can store multiple values. The main difference between these two structures is that the tuple is immutable. This means that the tuple cannot be modified after it is created.
+As you can see, \lstinline|list| and \lstinline|tuple| can store multiple values.
+The main difference between these two structures is that tuples are immutable.
+This means that the tuple cannot be modified after it is created.
 
-The syntax in Python has no braces to indicate blocks of code for class, function definitions or flow control. Blocks of code are denoted by line indentation. The number of spaces in the indentation is variable, but all statements within the block must be indented the same amount. Some developers use tab as indentation but it is a bad practice according to PEP8 (Style Guide for Python Code).
+The syntax in Python has no braces to indicate blocks of code for a class, function definitions or flow control.
+Blocks of code are denoted by indentation.
+The number of spaces in the indentation is variable, but all statements within the block must be indented of the same amount.
+Some developers use tab as indentation but it is a bad practice according to PEP8 (Style Guide for Python Code).
 
 The following code shows an example of how blocks of code are defined in \mbox{Python :}
 
@@ -257,7 +274,7 @@ for number in array :
 
 Statements in Python typically end with a new line. Python does, however, allow the use of the line continuation character (\textbackslash) to denote that the line should continue. Statements contained within the [ ], \{ \} or ( ) brackets do not need to use the line continuation character.
 
-For example, the following code is correct :
+For example, the following code is valid :
 
 \begin{lstlisting}
 a = 5
@@ -268,16 +285,18 @@ array = [1, 2, 3,
 \end{lstlisting}
 
 
-Sometimes a statement is required syntactically, but no code needs to be executed. For this special case, the keyword ‘pass’ exists. It’s a null operation, when it is executed, nothing happens.
+Sometimes a statement is required syntactically, but no code needs to be executed.
+For this special case, the keyword \lstinline|pass| exists.
+It’s a skip operation : when it is executed, nothing happens.
 
-For declaring a function, we use the keyword ‘def’:
+For declaring a function, we use the keyword \lstinline|def|:
 
 \begin{lstlisting}
 def plusOne(x):
     return x+1
 \end{lstlisting}
 
-Then, we can call the function that way : \lstinline{plusOne(1)}
+Then, we can call the function that way : \lstinline{plusOne(1)}.
 
 Since Python is a functional language, we can manipulate function as object, for example :
 
@@ -302,7 +321,7 @@ else:
     indentedStatementBlockForEachConditionFalse
 \end{lstlisting}
 
-For declaring loop, we use the keywords \lstinline|while| or \lstinline|for| :
+For declaring loops, we use the keywords \lstinline|while| or \lstinline|for| :
 \begin{lstlisting}
 while condition :
     <statement>
@@ -543,7 +562,9 @@ console.log(filter(tab, cond)); // [2, 4]
 \setpy{}
 \subsubsection{Languages features for dealing with reflection and meta-programming}
 \setpy{}
-Python is a duck-typed language, it does not have a strong typing. The idea is that you do not need a type in order to invoke an existing method on an object. If a method is defined on it, you can invoke it.
+Python is a duck-typed language, it does not have a strong typing.
+The idea is that you do not need a type in order to invoke an existing method on an object.
+If a method is defined on it, you can invoke it.
 
 For example (taken from wikipedia) :
 
@@ -566,18 +587,26 @@ in_the_forest(a) # => Quack, quack!
 in_the_forest(b) # => I'm Quackin'!
 \end{lstlisting}
 
-Duck typing is useful for defining new class that can take place in an existing system without having to implement or inherit useless methods from another class. For example, in Python, if you have a library that asks a “File” object as parameter, you can pass a string via the  “cStringIO” class. This class will mimic the behavior of the File class. The name of the concept refers to the duck test, attributed to James Whitcomb Riley, which may be phrased as follows: “When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.”
+Duck typing is useful for defining new classes that can take place in an existing system without having to implement or inherit useless methods from another class. For example, in Python, if you have a library that asks a “File” object as parameter, you can pass a string via the  “cStringIO” \todo{c} class. This class will mimic the behavior of the File class. The name of the concept refers to the duck test, attributed to James Whitcomb Riley, which may be phrased as follows: “When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.”
 
-Although Python is duck -typed, it is possible to check the type of a class via the built-in function ‘type’. We can also check if a class has an attribute via the built-in function ‘hasattr’. For example :
+Although Python is duck-typed\todo{Omg so much ducks}, it is possible to check the type of a class via the built-in function \lstinline|type|.
+We can also check if a class has an attribute via the built-in function \lstinline|hasattr|.
+For example :
 
 \begin{lstlisting}
 >>> type(a) # => <class '__main__.Duck'>
 >>> hasattr(a, 'quack') # => True
 \end{lstlisting}
 
-These methods exist and are useful but the philosophy of Python and duck-typing is to avoid using them and just call the method. If there is a risk of failure, Python gives us an appropriate exception to handle this situation : \lstinline|AttributeError| and \lstinline|TypeError|. AttributeError is triggered when the object does not have the supposed method (e.g. \lstinline|in_the_forest(5)|). TypeError is raised when an operation or function is applied to an object of inappropriate type (the associated value is a string giving details about the type of mismatch) (e.g. \lstinline|5 + 'a'|).
+These methods exist and are useful but the philosophy of Python and duck-typing is to avoid using them and just call the method.
+If there is a risk of failure, Python provides an appropriate exception to handle this situation : \lstinline|AttributeError| and \lstinline|TypeError|.
+\lstinline|AttributeError| is triggered when the object does not have the supposed method (e.g. \lstinline|in_the_forest(5)|).
+\lstinline|TypeError| is raised when an operation or function is applied to an object of inappropriate type (the associated value is a string giving details about the type of mismatch, e.g. \mbox{\lstinline|5 + 'a'|}).
 
-As said before, in Python, everything is object and all objects are "first class". By “first class”, we mean that all objects that can be named in the language (e.g., integers, strings, functions, classes, modules, methods, etc.) have equal status. This definition was designed by Guido Van Rossum, creator of Python. This means that every object can be assigned to variables, placed in lists, stored in dictionaries, passed as arguments, and so on.
+As said before, in Python, everything is object and all objects are ``first class''.
+It means that all objects that can be named in the language (e.g., integers, strings, functions, classes, modules, methods, etc.) have equal status.
+This definition was designed by Guido Van Rossum, creator of Python.
+This means that every object can be assigned to variables, placed in lists, stored in dictionaries, passed as arguments, and so on.
 
 So function and methods are also first class, as we can check :
 \begin{lstlisting}
@@ -594,7 +623,7 @@ Person.quack = b
 \end{lstlisting}
 
 
-This piece of code change a method during the run-time. This practice is called monkey-patching. 
+This piece of code changes a method at runtime. This practice is called monkey-patching.
 
 Python provides tools for introspecting class, the built-in function \lstinline|dir| gives the attributes (i.e. methods and class variable) of a class. For example :
 \begin{lstlisting}
@@ -637,13 +666,18 @@ Two leading underscore is called ``name mangling''. It’s a strong “internal 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: MyClass instance has no attribute '__secret2'
->>> a._M__secret2
+>>> a._MyClass__secret2
 0
 \end{lstlisting}
 
 \textbf{Two leading underscore and two ending underscore}
 
-When a method is like \lstinline|__this__|, it shouldn't be called. Because it means it's a method which Python calls, and the developer should not call it. There is always an operator or native function which calls these magic methods. Sometimes it's just a hook Python that calls in specific situations. For example, \lstinline|__init__()| is called when the object is created. \lstinline|__new__()| is called to build the instance.
+When a method is like \lstinline|__this__|, it shouldn't be called.
+Because it means it's a method that Python calls, and the developer should not call it.
+There is always an operator or native function that calls these magic methods.
+Sometimes it's just a hook Python calls in specific situations.
+For example, \lstinline|__init__()| is called when the object is created.
+\lstinline|__new__()| is called to build the instance.
 
 \textbf{Callable Object}
 
@@ -667,18 +701,22 @@ Also, we can create a class by using ``type'' : \lstinline|type('ClassName', (in
 >>> a = MyClass()
 >>> a.method()
 1
->>> MyClass.method = lambda self : self.x + self .y #monkey-patching
+>>> MyClass.method = lambda self : self.x + self .y # monkey-patching
 >>> a.method()
 3
->>> getattr(a, 'method') . __call__() # Another way to call the method
+>>> getattr(a, 'method').__call__() # Another way to call the method
 3
->>> globals()['__builtins__'].getattr.__call__( globals()['a'], 'method') . __call__() # Another long way..
+>>> globals()['__builtins__'].getattr.__call__(globals()['a'], 'method').__call__() # Another long way..
 3
 \end{lstlisting}
 
 \textbf{The Metaclass Hook}
 
-We saw a lot of things that prove that python can do meta-programming. However, this is not always easy and/or readble. As only a subset of what we can do with meta-programming is of interest. Python introduces an easy-way to create Metaclass, wich can be seen as a class factory. First, let's see how to create a meta-class with and without the facilities of Python (syntaxic sugar).
+A lot of things show that Python can do meta-programming.
+However, this is not always easy and/or readable.
+%As only a subset of what we can do with meta-programming is of interest.
+Python introduces an easy-way to create Metaclass, wich can be seen as a class factory.
+First, let's see how to create a meta-class with and without the facilities of Python (syntactic sugar).
 
 \begin{minipage}[c]{.5\linewidth}
 \begin{lstlisting}[caption=Without syntaxic sugar]
@@ -706,7 +744,8 @@ We saw a lot of things that prove that python can do meta-programming. However, 
 ~\\
 \end{minipage}
 
-Metaclasses are not that much usefull and used in real case. A good example of usage of Metaclass in Python is the creation of a Singleton :
+Metaclasses are not that much useful and used in practice.
+A good example of usage of Metaclass in Python is the creation of a Singleton :
 
 \begin{lstlisting}
 class Singleton(type):
@@ -717,7 +756,10 @@ class Singleton(type):
         return cls.instance
 \end{lstlisting}
 
-Every class that will be declared with the metaclass ``Singleton'' will only have one object. Even if we create multiple objects, they will all be the same object behind. This is done by overriding the \lstinline|call()| method. If any instantiation exists, the metaclass ``Singleton'' will not create a new object but will bind the existing one to the supposed new one.
+Every class that will be declared with the metaclass \lstinline|Singleton| will only have one object.
+Even if we create multiple objects, they will all be the same object behind.
+This is done by overriding the \lstinline|call()| method.
+If any instantiation exists, the metaclass \lstinline|Singleton| will not create a new object but will bind the existing one to the supposed new one.
 
 \begin{lstlisting}
 >>> class Database(metaclass=Singleton):
@@ -736,7 +778,7 @@ Every class that will be declared with the metaclass ``Singleton'' will only hav
 \begin{description}
 \item[Introspection] As we have seen, we can easily inspect and access representation of an object in Python with the method \lstinline|dir()|. We can also inspect locals and globals symbol tables via \lstinline|locals()| and \lstinline|globals()|.
 
-\item[Intercession] We have seen that we can add or replace an attribute (method or variable) in an object (remember that everything is object in python).
+\item[Intercession] We have seen that we can add or replace an attribute (method or variable) in an object (remember that everything is object in Python).
 \end{description}
 
 \subsubsection{Meta-object protocol}
@@ -854,7 +896,7 @@ It can also be retrieved from an object :
 s.constructor.prototype; // Object { genre: "rock", constructor: Song() }
 \end{lstlisting}
 
-So now, the object s has a field \lstinline|genre| :
+So now, the object \lstinline|s| can access the field \lstinline|genre| :
 \begin{lstlisting}
 s.genre; // "rock"
 \end{lstlisting}
@@ -955,12 +997,13 @@ The primitive data types in JavaScript are of type object (i.e. \lstinline|Objec
 Everything is object in JavaScript, even objects’ prototypes.
 Note that Functions are also objects.
 
-Every object have a prototype, a prototype is an object (dictionnary) that binds method names to actual code. We use the property \lstinline|__proto__| to access to the prototype of an object.
+Every object has a prototype, a prototype is an object (dictionary) that binds method names to actual code.
+We use the property \lstinline|__proto__| to access the prototype of an object. \todo{Rather use the 'prototype object' term?}
 %The prototype object that has been used to create the object can be referenced by using the \lstinline|__proto__| property.
 %In the figure, the \lstinline|__proto__| property is used to link prototypes and to provide inheritance.
 % foo.__proto__ == Foo.prototype // true
 
-The \lstinline|prototype| property corresponds to the object that was used to build the actual object.
+The \lstinline|prototype| property corresponds to the object (called \textit{prototype object}) that was used to build the actual object.
 
 \begin{figure}[h]
     \centering
@@ -979,6 +1022,7 @@ false
 >>> Custom.prototype.hasOwnProperty('constructor')
 true
 \end{lstlisting}
+\todo[inline]{Use Custom.prototype.constructor.toString() ?}
 
 
 \subsubsection{Limitations of the reflective features}
@@ -994,7 +1038,20 @@ Contrarily to Ruby, there is no way to access instances of a constructor in Java
 
 \subsection{Reflective features}
 
-Both, Javascript and Python, are duck-typed languages. In both languages, everything is object. They both offer the same kind of reflective features but they don't rely on the same mechanism. Javascript is prototype-based and Python is class-based. In Javascript, you can inspect an object by calling \setjs \lstinline|Object.getOwnPropertyNames(objectToAnalyse)|. This will only show you what the object (dictionary) contains. As many methods are defined in Prototypes in Javascript, you will have to inspect the attribute \lstinline|__proto__| of the object to retrieve some more methods of the object. But that will not be enough as Javascript rely on Prototype-chaining to find method name. So, you will have to explore the attribute \lstinline|__proto__| of \lstinline|__proto__|, and so on until there is no more \lstinline|__proto__| defined. \setpy As Python rely on class, the langage have a clean inheritance system. By calling \lstinline|dir(objectToAnalyse)|, it will retrieve for you all attributes that the object inherits by using the keys in the \lstinline|__dict__| attribute of the object. This is not possible in Javascript as there is no class and no inheritance.  
+Both Javascript and Python, are duck-typed languages. \todo{dynamically typed languages?}
+In both languages, everything is object.
+They both offer the same kind of reflective features but they don't rely on the same mechanism.
+Javascript is prototype-based and Python is class-based.
+In Javascript, you can inspect an object by calling \setjs \mbox{\lstinline|Object.getOwnPropertyNames(objectToAnalyse)|}.
+This will only show the properties that the object (dictionary) contains.
+As many methods are defined in Prototypes in JavaScript, you will have to inspect the attribute \lstinline|__proto__| of the object to retrieve other available methods of the object.
+But that will not be enough \todo{Not enough ?} as JavaScript rely on Prototype-chaining to find method name.
+So, you will have to explore the attribute \lstinline|__proto__| of \lstinline|__proto__|, and so on until there is no more \lstinline|__proto__| defined.
+\setpy
+As Python rely on classes, the langage has a clean \todo{simpler?} inheritance system.
+By calling \lstinline|dir(objectToAnalyse)|, all attributes that the object inherits are retrieved by using the keys in the \lstinline|__dict__| attribute of the object.
+This is not possible in JavaScript as there is no class and no inheritance. \todo{Wtf no inheritance in JavaScript ?!}
+
 
 \subsection{Kinds of reflection}
 
