@@ -994,7 +994,7 @@ Everything is object in JavaScript, even objects’ prototypes.
 Note that Functions are also objects.
 
 Every object has a prototype, a prototype is an object (dictionary) that binds method names to actual code.
-We use the property \lstinline|__proto__| to access the prototype of an object. \todo{Rather use the 'prototype object' term?}
+We use the property \lstinline|__proto__| to access the prototype of an object.
 %The prototype object that has been used to create the object can be referenced by using the \lstinline|__proto__| property.
 %In the figure, the \lstinline|__proto__| property is used to link prototypes and to provide inheritance.
 % foo.__proto__ == Foo.prototype // true
@@ -1033,20 +1033,17 @@ Contrarily to Ruby, there is no way to access instances of a constructor in Java
 
 \subsection{Reflective features}
 
-Both Javascript and Python, are duck-typed languages. \todo{dynamically typed languages?}
+Both Javascript and Python, are dynamically typed (duck-typed) languages.
 In both languages, everything is object.
 They both offer the same kind of reflective features but they don't rely on the same mechanism.
 Javascript is prototype-based and Python is class-based.
 In Javascript, you can inspect an object by calling \setjs \mbox{\lstinline|Object.getOwnPropertyNames(objectToAnalyse)|}.
 This will only show the properties that the object (dictionary) contains.
 As many methods are defined in Prototypes in JavaScript, you will have to inspect the attribute \lstinline|__proto__| of the object to retrieve other available methods of the object.
-But that will not be enough \todo{Not enough ?} as JavaScript rely on Prototype-chaining to find method name.
-So, you will have to explore the attribute \lstinline|__proto__| of \lstinline|__proto__|, and so on until there is no more \lstinline|__proto__| defined.
+But that will not be enough to find all other available methods as JavaScript rely on Prototype-chaining to find method name.
+So, you will have to explore the attribute \lstinline|__proto__| of the \lstinline|__proto__| object, and so on until there is no more \lstinline|__proto__| defined.
 \setpy
-As Python rely on classes, the langage has a clean \todo{simpler?} inheritance system.
-By calling \lstinline|dir(objectToAnalyse)|, all attributes that the object inherits are retrieved by using the keys in the \lstinline|__dict__| attribute of the object.
-This is not possible in JavaScript as there is no class and no inheritance. \todo{Wtf no inheritance in JavaScript ?!}
-
+Python rely on classes, by calling \lstinline|dir(objectToAnalyse)|, all attributes that the object inherits are retrieved by using the keys in the \lstinline|__dict__| attribute of the object.
 
 \subsection{Kinds of reflection}
 
