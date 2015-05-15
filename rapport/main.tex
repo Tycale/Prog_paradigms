@@ -81,10 +81,11 @@ Python and JavaScript} }}
 
 \Large {
 
-\begin{tabular}{rl}
-\multicolumn{2}{c}{\textbf{Group 1}}  \\[0.3 cm]
-\textsc{Gerondal} & Thibault  \\
-\textsc{Heraly } & Michaël \\
+\begin{tabular}{rll}
+\multicolumn{3}{c}{\textbf{Group 1}}  \\ [0.3 cm]
+\hspace{2cm} \textsc{Gerondal} & Thibault & 1093-09-00 \\
+\hspace{2cm} \textsc{Heraly } & Michaël & 1772-09-00 \\
+\multicolumn{3}{c}{\{thibault.gerondal, michael.heraly\}@student.uclouvain.be} \\
 
 
 
@@ -760,10 +761,8 @@ If any instantiation exists, the metaclass \lstinline|Singleton| will not create
 ...   pass
 >>> a = Database()
 >>> b = Database()
->>> a
-<__main__.Database object at 0x10a9ae5c0>
->>> b
-<__main__.Database object at 0x10a9ae5c0>
+>>> a is b # Comparison by reference
+True
 \end{lstlisting}
 
 
