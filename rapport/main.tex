@@ -230,11 +230,11 @@ In the following sections, we are going to give you a brief introduction to the 
 \setpy
 
 Python is an imperative language where everything is object.
-There are a lot of built-in types, here is a non-exhaustive list of the most used ones: \lstinline{int}, \lstinline{bool}, \lstinline{str}, \lstinline{float}, \lstinline{long}, \lstinline{tuple}, \lstinline{list}, \lstinline{dict}, \lstinline{set}.
+There are a lot of built-in types, here is a non-exhaustive list of the most used ones: \lstinline{int}, \lstinline{bool}, \lstinline{str}, \lstinline{float}, \lstinline{long}, \lstinline{tuple}, \lstinline{list}, \lstinline{dict}, \lstinline{set} \cite{python:types}.
 Since everything is object, there is a class for all of these types which is called \lstinline{type}.
 There is also the special type (object) \lstinline{None} which belongs to \lstinline{NoneType} (which belongs to \lstinline{type}).
 None is frequently used to represent the absence of a value, as when default arguments are not passed to a function.
-There are also two widely used built-in constants who are \lstinline{True} and \lstinline{False}, that belong to the type \lstinline{bool}.
+There are also two widely used built-in constants who are \lstinline{True} and \lstinline{False}, that belong to the type \lstinline{bool}\cite{python:types}.
 
 For example,
 \begin{lstlisting}
@@ -591,7 +591,7 @@ in_the_forest(b) # => I'm Quackin'!
 Duck typing is useful for defining new classes that can take place in an existing system without having to implement or inherit useless methods from another class. For example, in Python, if you have a library that asks a “File” object as parameter, you can pass a string via the  “cStringIO” class. This class will mimic the behavior of the File class. The name of the concept refers to the duck test, attributed to James Whitcomb Riley, which may be phrased as follows: “When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.” \cite{ wiki:duck}
 
 It is possible to check the type of a class via the built-in function \lstinline|type|.
-We can also check if a class has an attribute via the built-in function \lstinline|hasattr|.
+We can also check if a class has an attribute via the built-in function \lstinline|hasattr| \cite{python:fct}.
 For example :
 
 \begin{lstlisting}
@@ -620,7 +620,7 @@ Person.quack = b
 
 This piece of code changes a method at runtime. This practice is called monkey-patching, a kind of structural reflection.
 
-Python provides tools for introspecting class, the built-in function \lstinline|dir| returns the attributes (i.e. methods and class variable) of a class. For example :
+Python provides tools for introspecting class, the built-in function \lstinline|dir| \cite{ python:fct} returns the attributes (i.e. methods and class variable) of a class. For example :
 \begin{lstlisting}
 >>> dir(Person)
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'quack']
@@ -676,7 +676,7 @@ For example, \lstinline|__init__()| is called when the object is created.
 
 \textbf{Callable Object}
 
-Object in Python can be “callable” or not. A callable object is an object having a method named \lstinline|__call__()|. In fact, \lstinline|X(arg1, arg2, ...)| is a shorthand for \mbox{\lstinline|X.__call__(arg1, arg2, ...)|.} To know if an object is callable, we will use the method \lstinline|__getattr__('__call__')|.
+Object in Python can be “callable” or not. A callable object is an object having a method named \lstinline|__call__()|. In fact, \lstinline|X(arg1, arg2, ...)| is a shorthand for \mbox{\lstinline|X.__call__(arg1, arg2, ...)|.} To know if an object is callable, we will use the method \lstinline|__getattr__('__call__')| \cite{ python:callable}.
 
 \begin{lstlisting}
 >>> class ActingLikeAFunction:
@@ -739,7 +739,7 @@ First, let's see how to create a meta-class with and without the facilities of P
 \end{minipage}
 
 Metaclasses are not that much useful and used in practice.
-A good example of usage of Metaclass in Python is the creation of a Singleton :
+A good example of usage of Metaclass in Python is the creation of a Singleton \cite{ python:singleton} :
 
 \begin{lstlisting}
 class Singleton(type):
@@ -777,7 +777,7 @@ If any instantiation exists, the metaclass \lstinline|Singleton| will not create
 
 \subsubsection{Meta-object protocol}
 
-As seen before, in Python, everything is object and every object is first-class \cite{python:first-class}. All classes inherit from the class ``type'', even the class ``type'':
+As seen before, in Python, everything is object and every object is first-class \cite{python:first-class}. All classes inherit from the class ``type'', even the class ``type'' \cite{ python:image}:
 
 \begin{minipage}[c]{.48\linewidth}
 \begin{lstlisting}
