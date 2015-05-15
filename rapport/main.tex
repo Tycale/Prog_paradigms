@@ -602,9 +602,9 @@ Python provides tools for introspecting class, the built-in function \lstinline|
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'quack']
 \end{lstlisting}
 
-The resulting list is not necessarily complete, and may be inaccurate. As this built-in function will rely on the keys in \lstinline|__dict__| and on the method \lstinline|__getattr__()| of the object, we can define (or change at runtime) these attributes.
+The resulting list is not necessarily complete, and may be inaccurate. As this built-in function will rely on the keys in \lstinline|__dict__| (dict, for dictionary) and on the method \lstinline|__getattr__(object, name)| of the object, we can define (or change at runtime) these attributes. \lstinline|__setattr__(object, name, value)| is the counter-part.
 
-We can inspect an object with \lstinline|dir|, but we can also inspect a frame at runtime. For doing so, we can use built-in function \lstinline|locals()| and \lstinline|globals()|.
+We can inspect an object with \lstinline|dir(object)|, but we can also inspect a frame at runtime. For doing so, we can use built-in function \lstinline|locals()| and \lstinline|globals()|.
 
 \begin{description}
 \item[locals()] returns a dictionary representing the current local symbol table.
@@ -662,20 +662,74 @@ I look like a function
 Also, we can create a class by using ``type'' : \lstinline|type('ClassName', (inherited_class_1, inherited_class_2, ...) {key: value,})|. Then, we can add attributes or methods to this class.
 
 \begin{lstlisting}
->>> globals()['MyClass'] = type('MyClass', (), {'x': 1, 'y':2})
+>>> MyClass = type('MyClass', (object,), {'x': 1, 'y':2})
 >>> MyClass.method = lambda self : self.x
 >>> a = MyClass()
 >>> a.method()
 1
->>> MyClass.method = lambda self : self.x + self .y
+>>> MyClass.method = lambda self : self.x + self .y #monkey-patching
 >>> a.method()
 3
->>> getattr(a, 'method') . __call__()
+>>> getattr(a, 'method') . __call__() # Another way to call the method
 3
->>> globals()['__builtins__'].getattr.__call__( globals()['a'], 'method') . __call__()
+>>> globals()['__builtins__'].getattr.__call__( globals()['a'], 'method') . __call__() # Another long way..
 3
->>> globals()['__builtins__'].getattr = None # You can break python if you want
 \end{lstlisting}
+
+\textbf{The Metaclass Hook}
+
+We saw a lot of things that prove that python can do meta-programming. However, this is not always easy and/or readble. As only a subset of what we can do with meta-programming is of interest. Python introduces an easy-way to create Metaclass, wich can be seen as a class factory. First, let's see how to create a meta-class with and without the facilities of Python (syntaxic sugar).
+
+\begin{minipage}[c]{.5\linewidth}
+\begin{lstlisting}[caption=Without syntaxic sugar]
+>>> class MyMetaClass(type):
+...   pass
+>>> type(MyMetaClass)
+<class 'type'>
+>>> FactoredClass = MyMetaClass('FactoredClass', (object,), {})
+>>> type(FactoredClass)
+<class '__main__.MyMetaClass'>
+\end{lstlisting}
+~\\
+\end{minipage} \hfill
+\begin{minipage}[c]{.5\linewidth}
+\begin{lstlisting}[caption=With syntaxic sugar]
+>>> class MyMetaClass(type):
+...   pass
+>>> type(MyMetaClass)
+<class 'type'>
+>>> class FactoredClass(object, metaclass=MyMetaClass):
+...   pass
+>>> type(FactoredClass)
+<class '__main__.MyMetaClass'>
+\end{lstlisting}
+~\\
+\end{minipage}
+
+Metaclasses are not that much usefull and used in real case. A good example of usage of Metaclass in Python is the creation of a Singleton :
+
+\begin{lstlisting}
+class Singleton(type):
+    instance = None
+    def __call__(cls, *args, **kw):
+        if not cls.instance:
+             cls.instance = super(Singleton, cls).__call__(*args, **kw)
+        return cls.instance
+\end{lstlisting}
+
+Every class that will be declared with the metaclass ``Singleton'' will only have one object. Even if we create multiple objects, they will all be the same object behind. This is done by overriding the \lstinline|call()| method. If any instantiation exists, the metaclass ``Singleton'' will not create a new object but will bind the existing one to the supposed new one.
+
+\begin{lstlisting}
+>>> class Database(metaclass=Singleton):
+...   pass
+>>> a = Database()
+>>> b = Database()
+>>> a
+<__main__.Database object at 0x10a9ae5c0>
+>>> b
+<__main__.Database object at 0x10a9ae5c0>
+\end{lstlisting}
+
 
 \subsubsection{Kinds of reflection and meta-programming features}
 
@@ -950,6 +1004,9 @@ Same kinds of reflection (introspection \& intercession).
 
 
 \subsection{Meta-object Protocol}
+
+
+% If you work with JavaScript, it should be familiar for you. There are no classes in JavaScript. Therefore, when you emulate them, you will have to call a factory function. The function returns an object, which will be used later as a class. Python metaclass works in the same but more convenient way
 
 \todo[inline]{Tycale}
 
