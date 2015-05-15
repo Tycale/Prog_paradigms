@@ -1033,7 +1033,7 @@ Contrarily to Ruby, there is no way to access instances of a constructor in Java
 
 \subsection{Reflective features}
 
-Both Javascript and Python, are dynamically typed (duck-typed) languages.
+Both Python and Javascript, are dynamically typed (duck-typed) languages.
 In both languages, everything is object.
 They both offer the same kind of reflective features but they don't rely on the same mechanism.
 Javascript is prototype-based and Python is class-based.
@@ -1047,24 +1047,26 @@ Python rely on classes, by calling \lstinline|dir(objectToAnalyse)|, all attribu
 
 \subsection{Kinds of reflection}
 
-Same kinds of reflection (introspection \& intercession).
+Python and JavaScript provide the same kind of reflection (Introspection and Intercession). In both languages, we can add and redefine methods and variables.
 
+In JavaScript, it is easy to retrieve the code of a function. The only thing to do isto call the method \lstinline|toString| on the function object. In Python, you have to import a module called ``inspect''. This module includes serval methods among which ``getsource'' that will have the same behavior than the method \lstinline|toString| in JavaScript. 
 
 \subsection{Meta-object Protocol}
 
-
-% If you work with JavaScript, it should be familiar for you. There are no classes in JavaScript. Therefore, when you emulate them, you will have to call a factory function. The function returns an object, which will be used later as a class. Python metaclass works in the same but more convenient way
+Both Python and Javascript have adopted a simple Meta-object Protocol where all objects inherit from a super-type. There are no classes in JavaScript. So the inheritance is available through Prototype-chaining. Python offers classes that are similar to most oriented-object languages. Python allows to easily create meta-class. This is also possible in JavaScript but this is more tedious, given the need to emulate this behavior through prototypes.
 
 
 \subsection{Difference of reflection and meta-programming}
 
-JavaScript has a better API for reflection and meta-programming than Python.
-
-
+JavaScript has a weaker API for reflection and meta-programming than Python. But this might change with ECMAScript 6 that will bring new built-in objects (Proxy and Reflect).
 
 \section{Conclusion}
 
+* Possibilités de la reflexion
 
+* Mechanisme de réflexion différent
+
+* 
 
 \section{Bibliography}
 \todo[inline]{Bibliography}
