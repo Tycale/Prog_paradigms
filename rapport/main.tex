@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
-%\usepackage[top=2.5cm,bottom=2.5cm,left=4cm,right=4cm]{geometry}
+\usepackage[top=3.5cm,bottom=3.5cm,left=4cm,right=4cm]{geometry}
 \usepackage{enumerate}
 \usepackage{graphicx}
 %\usepackage[table,xcdraw]{xcolor}
@@ -209,9 +209,9 @@ On one hand, JavaScript was born in the 90s out of a need to make web pages dyna
 On the other hand, Python was conceived in the late 1980s as a programming language capable of exception handling.
 
 Both languages have evolved in very different contexts.
-Python has always been maturely considered and debated during its development cycles; while JavaScript has long been considered as a language whose sole purpose was to boost internet pages.
+Python has always been maturely considered and debated during its development cycles \cite{ wiki:python}; while JavaScript has long been considered as a language whose sole purpose was to boost internet pages.
 Therefore, it was much less standardized and the standard was not always respected.
-Microsoft and Netscape maintained separate languages for their browser.
+Microsoft and Netscape maintained separate languages for their browser \cite{wiki:javascript}.
 Given the competition between the two browsers, the JavaScript language largely developed in the context of war of performance and functionality.
 
 Nowadays, JavaScript is widely used on most websites and is even used for running web servers (with popular frameworks like Nodejs, Meteorjs, \dots).
@@ -710,7 +710,7 @@ Also, we can create a class by using ``type'' : \lstinline|type('ClassName', (in
 With all these tools, we can do meta-programming.
 However, this is not always easy and/or readable.
 Python introduces an easy-way to create Metaclass, wich can be seen as a class factory.
-First, let's see how to create a meta-class with and without the facilities of Python (syntactic sugar).
+First, let's see how to create a meta-class with and without the facilities of Python (syntactic sugar) \cite{python:metaclasses}.
 
 \begin{minipage}[c]{.5\linewidth}
 \begin{lstlisting}[caption=Without syntactic sugar]
@@ -777,7 +777,7 @@ If any instantiation exists, the metaclass \lstinline|Singleton| will not create
 
 \subsubsection{Meta-object protocol}
 
-As seen before, in Python, everything is object and every object is first-class. All classes inherit from the class ``type'', even the class ``type'':
+As seen before, in Python, everything is object and every object is first-class \cite{python:first-class}. All classes inherit from the class ``type'', even the class ``type'':
 
 \begin{minipage}[c]{.48\linewidth}
 \begin{lstlisting}
@@ -813,8 +813,6 @@ For example, redefining ``type'' or ``object'' to ``None'' will have no impact o
 This is a clear limitation of Python as we can alter the global system (and this is considered as a valid operation) but this does not have any impact.
 
 
-
-\newpage
 \subsection{JavaScript}
 
 \setjs
@@ -1030,8 +1028,6 @@ Contrarily to Ruby, there is no way to access instances of a constructor in Java
 
 
 
-
-\newpage
 \section{Comparing the languages}
 
 \subsection{Reflective features}
@@ -1076,8 +1072,7 @@ Both languages have a different meta-object protocol (MOP), but they provide sim
 
 \section{Bibliography}
 
-
-\bibliographystyle{abbrv}
+\bibliographystyle{unsrt}
 \bibliography{bibli}
 
 \end{document}
