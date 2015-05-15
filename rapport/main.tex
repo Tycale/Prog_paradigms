@@ -375,7 +375,7 @@ JavaScript objects consists of associative arrays.
 The names (keys) of object properties are strings.
 The properties and their values can be added, changed, or deleted at run-time.
 The first type in JavaScript is \lstinline[basicstyle=\small\ttfamily]|Object|.
-In addition, there are six JavaScript primitive \mbox{Data types :}
+In addition, there are six JavaScript primitive \mbox{Data types \cite{js:datatypes} :}
 \begin{description}
 \item[Boolean] \lstinline|true| and \lstinline|false|.
 
@@ -387,7 +387,7 @@ In addition, there are six JavaScript primitive \mbox{Data types :}
 			(not yet standard, in ECMAScript 6 proposal).
 
 \item[Undefined] variables without a value (or setting a variable to \lstinline|undefined|).
-\item[Null] a variable whose value is \lstinline|null| represents ``nothing''. To be consistent, the type of such a value should be Null. But the typeof a \lstinline|null| value is \lstinline|Object|. This is considered as a bug in JavaScript, but it is part of the ECMAScript language specification.
+\item[Null] a variable whose value is \lstinline|null| represents ``nothing''. To be consistent, the type of such a value should be Null. But the typeof a \lstinline|null| value is \lstinline|Object|. This is considered as a bug in JavaScript \cite{js:null}, but it is part of the ECMAScript language specification.
 \end{description}
 
 There are also built-in types (which are not primitive data types) : \lstinline|Array|, \lstinline|Function|, \lstinline|RegExp|.
@@ -818,7 +818,7 @@ This is a clear limitation of Python as we can alter the global system (and this
 \setjs
 \subsubsection{Languages features for dealing with reflection and meta-programming}
 
-Different informations about the type of an object \lstinline|custom| can be found in JavaScript :
+Different informations about the type of an object \lstinline|custom| can be found in \mbox{JavaScript :}
 \begin{itemize}
 \item The primitive data type of an object can be found using the \lstinline|typeof| operator (e.g. \lstinline|typeof custom // "object"|)
 
@@ -898,7 +898,7 @@ So now, the object \lstinline|s| can access the field \lstinline|genre| :
 s.genre; // "rock"
 \end{lstlisting}
 
-JavaScript proceeds method lookup in the following order \cite{js:prototypeChain} :
+JavaScript proceeds method lookup in the following order \cite{js:objectmodel} :
 \begin{enumerate}
 \item in the object itself;
 \item following the prototype chain.
@@ -928,7 +928,7 @@ s.album = "Brother In Arms";
 \medskip
 \label{bind}
 The \lstinline|bind| method creates a new function which, when called, has its \lstinline|this| keyword set to the provided value. \\
-Example (taken from the MDN) : \\
+Example (taken from the MDN) :
 \begin{lstlisting}
 this.x = 9;
 var module = {
@@ -951,9 +951,9 @@ It is particularly useful when making AJAX requests.
 
 
 The ECMAScript 6 proposal brings the \lstinline|Proxy| object.
-It allows to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc).
+It allows to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc) \cite{js:proxy}.
 But it is not yet implemented in web browsers as of this writing. \\
-Example (taken from the MDN) : \\
+Example (taken from the MDN) :
 \begin{lstlisting}
 var handler = {
     // Return 37 if 'name' is not in target
@@ -983,19 +983,19 @@ JavaScript allows different kinds of reflection features :
 \end{itemize}
 
 As JavaScript is an interpreted language, it proceeds runtime reflection.
-That means that the system can be adapted at runtime, once it has been created and run.
+That means that the system can be adapted at runtime, once it has been created and run \cite{js:objectmodel}.
 
 
 
 \subsubsection{Meta-object protocol}
 
-The primitive data types in JavaScript are of type object (i.e. \lstinline|Object|, \mbox{\lstinline|Boolean|,} \lstinline|String|, \lstinline|Number|, and \lstinline|Symbol|).
+The primitive data types in JavaScript are of type object (i.e. \lstinline|Object|, \mbox{\lstinline|Boolean|,} \lstinline|String|, \lstinline|Number|, and \lstinline|Symbol|) \cite{js:datatypes}.
 % these are *not* instances of Object !
 Everything is object in JavaScript, even objects’ prototypes.
 Note that Functions are also objects.
 
 Every object has a prototype, a prototype is an object (dictionary) that binds method names to actual code.
-We use the property \lstinline|__proto__| to access the prototype of an object.
+We use the property \lstinline|__proto__| to access the prototype of an object \cite{js:mop}.
 %The prototype object that has been used to create the object can be referenced by using the \lstinline|__proto__| property.
 %In the figure, the \lstinline|__proto__| property is used to link prototypes and to provide inheritance.
 % foo.__proto__ == Foo.prototype // true
@@ -1057,7 +1057,7 @@ Both Python and Javascript have adopted a simple Meta-object Protocol where all 
 
 \subsection{Difference of reflection and meta-programming}
 
-JavaScript has a weaker API for reflection and meta-programming than Python. But this might change with ECMAScript 6, as it will bring new built-in objects (Proxy and Reflect).
+JavaScript has a weaker API for reflection and meta-programming than Python. But this might change with ECMAScript 6, as it will bring new built-in objects (Proxy and Reflect) \cite{js:meta}.
 
 
 \section{Conclusion}
