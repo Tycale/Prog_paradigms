@@ -289,16 +289,16 @@ Sometimes a statement is required syntactically, but no code needs to be execute
 For this special case, the keyword \lstinline|pass| exists.
 It’s a skip operation : when it is executed, nothing happens.
 
-For declaring a function, we use the keyword \lstinline|def|:
+For declaring a function, use the keyword \lstinline|def|:
 
 \begin{lstlisting}
 def plusOne(x):
     return x+1
 \end{lstlisting}
 
-Then, we can call the function that way : \lstinline{plusOne(1)}.
+The function can be called that way : \lstinline{plusOne(1)}.
 
-Since Python is a functional language, we can manipulate function as object, for example :
+Since Python is a functional language, function can be manipulated as an object, for example :
 
 \begin{lstlisting}
 >>> type(plusOne) #=> <class 'function'>
@@ -306,7 +306,7 @@ Since Python is a functional language, we can manipulate function as object, for
 >>> a(1) #=> 2
 \end{lstlisting}
 
-For declaring conditions, we use keywords \lstinline|if|, \lstinline|elif| and \lstinline|else| :
+For declaring conditions, use keywords \lstinline|if|, \lstinline|elif| and \lstinline|else| :
 
 \begin{lstlisting}
 if condition1 :
@@ -321,7 +321,7 @@ else:
     indentedStatementBlockForEachConditionFalse
 \end{lstlisting}
 
-For declaring loops, we use the keywords \lstinline|while| or \lstinline|for| :
+For declaring loops, use the keywords \lstinline|while| or \lstinline|for| :
 \begin{lstlisting}
 while condition :
     <statement>
@@ -617,9 +617,9 @@ Person.quack = b
 \end{lstlisting}
 
 
-This piece of code changes a method at runtime. This practice is called monkey-patching.
+This piece of code changes a method at runtime. This practice is called monkey-patching, a kind of structural reflection.
 
-Python provides tools for introspecting class, the built-in function \lstinline|dir| gives the attributes (i.e. methods and class variable) of a class. For example :
+Python provides tools for introspecting class, the built-in function \lstinline|dir| returns the attributes (i.e. methods and class variable) of a class. For example :
 \begin{lstlisting}
 >>> dir(Person)
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'quack']
@@ -752,7 +752,7 @@ class Singleton(type):
 Every class that will be declared with the metaclass \lstinline|Singleton| will only have one object.
 Even if we create multiple objects, they will all be the same object behind.
 This is done by overriding the \lstinline|call()| method.
-If any instantiation exists, the metaclass \lstinline|Singleton| will not create a new object but will bind the existing one to the supposed new one.
+If any instantiation exists, the metaclass \lstinline|Singleton| will not create a new object but will bind the existing one to the supposed new one. This is an example of behavioural reflection.
 
 \begin{lstlisting}
 >>> class Database(metaclass=Singleton):
@@ -771,7 +771,8 @@ If any instantiation exists, the metaclass \lstinline|Singleton| will not create
 \begin{description}
 \item[Introspection] As we have seen, we can easily inspect and access representation of an object in Python with the method \lstinline|dir()|. We can also inspect locals and globals symbol tables via \lstinline|locals()| and \lstinline|globals()|.
 
-\item[Intercession] We have seen that we can add or replace an attribute (method or variable) in an object.
+\item[Intercession and Structural reflection] attributes (method or variable) of an object can be added or replaced.
+\item[behavioural reflection] dispatching mechanism can be changed.
 \end{description}
 
 \subsubsection{Meta-object protocol}
@@ -1043,7 +1044,7 @@ As many methods are defined in Prototypes in JavaScript, you will have to inspec
 But that will not be enough to find all other available methods as JavaScript rely on Prototype-chaining to find method name.
 So, you will have to explore the attribute \lstinline|__proto__| of the \lstinline|__proto__| object, and so on until there is no more \lstinline|__proto__| defined.
 \setpy
-Python rely on classes, by calling \lstinline|dir(objectToAnalyse)|, all attributes that the object inherits are retrieved by using the keys in the \lstinline|__dict__| attribute of the object.
+Python rely on classes, by calling \lstinline|dir(objectToAnalyse)|, all attributes that the object inherits are retrieved by using the keys in the \lstinline|__dict__| attribute of the object. As explained above, it's easier to list available methods of an object in Python than in JavaScript.
 
 \subsection{Kinds of reflection}
 
@@ -1054,8 +1055,6 @@ Same kinds of reflection (introspection \& intercession).
 
 
 % If you work with JavaScript, it should be familiar for you. There are no classes in JavaScript. Therefore, when you emulate them, you will have to call a factory function. The function returns an object, which will be used later as a class. Python metaclass works in the same but more convenient way
-
-\todo[inline]{Tycale}
 
 
 \subsection{Difference of reflection and meta-programming}
