@@ -845,7 +845,7 @@ In the case of an \lstinline|undefined| object, only the primitive data type can
 
 
 \paragraph{Object properties}{
-It is possible to get the own properties of the object \lstinline|s| by calling \lstinline|Object.getOwnPropertyNames(s)|. \\
+It is possible to get the own properties of the object \lstinline|s| by calling \lstinline|Object.getOwnPropertyNames(s)|\cite{js:getOwnPropertyNames}. \\
 Example:
 \begin{lstlisting}
 function Song (artist, title) {
@@ -900,7 +900,7 @@ So now, the object \lstinline|s| can access the field \lstinline|genre| :
 s.genre; // "rock"
 \end{lstlisting}
 
-JavaScript proceeds method lookup in the following order :
+JavaScript proceeds method lookup in the following order \cite{js:prototypeChain} :
 \begin{enumerate}
 \item in the object itself;
 \item following the prototype chain.
@@ -1052,7 +1052,7 @@ Python rely on classes, by calling \lstinline|dir(objectToAnalyse)|, all attribu
 
 Python and JavaScript provide the same kind of reflection (Introspection and Intercession). In both languages, we can add and redefine methods and variables.
 
-In JavaScript, it is easy to retrieve the code of a function. The only thing to do isto call the method \lstinline|toString| on the function object. In Python, you have to import a module called ``inspect''. This module includes serval methods among which ``getsource'' that will have the same behavior than the method \lstinline|toString| in JavaScript. 
+In JavaScript, it is easy to retrieve the code of a function. The only thing to do isto call the method \lstinline|toString| on the function object. In Python, you have to import a module called ``inspect''. This module includes serval methods among which ``getsource'' that will have the same behavior than the method \lstinline|toString| in JavaScript.
 
 \subsection{Meta-object Protocol}
 
