@@ -233,7 +233,7 @@ There are a lot of built-in types, here is a non-exhaustive list of the most use
 Since everything is object, there is a class for all of these types which is called \lstinline{type}.
 There is also the special type (object) \lstinline{None} which belongs to \lstinline{NoneType} (which belongs to \lstinline{type}).
 None is frequently used to represent the absence of a value, as when default arguments are not passed to a function.
-There are also two widely used built-in constants who are \lstinline{True} and \lstinline{False}, that belong to the type \lstinline{bool}. Assignments to \lstinline{None}, \lstinline{True} and \lstinline{False} are illegal and raise a SyntaxError.
+There are also two widely used built-in constants who are \lstinline{True} and \lstinline{False}, that belong to the type \lstinline{bool}.
 
 For example,
 \begin{lstlisting}
@@ -587,9 +587,9 @@ in_the_forest(a) # => Quack, quack!
 in_the_forest(b) # => I'm Quackin'!
 \end{lstlisting}
 
-Duck typing is useful for defining new classes that can take place in an existing system without having to implement or inherit useless methods from another class. For example, in Python, if you have a library that asks a “File” object as parameter, you can pass a string via the  “cStringIO” \todo{c} class. This class will mimic the behavior of the File class. The name of the concept refers to the duck test, attributed to James Whitcomb Riley, which may be phrased as follows: “When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.”
+Duck typing is useful for defining new classes that can take place in an existing system without having to implement or inherit useless methods from another class. For example, in Python, if you have a library that asks a “File” object as parameter, you can pass a string via the  “cStringIO” class. This class will mimic the behavior of the File class. The name of the concept refers to the duck test, attributed to James Whitcomb Riley, which may be phrased as follows: “When I see a bird that walks like a duck and swims like a duck and quacks like a duck, I call that bird a duck.”
 
-Although Python is duck-typed\todo{Omg so much ducks}, it is possible to check the type of a class via the built-in function \lstinline|type|.
+It is possible to check the type of a class via the built-in function \lstinline|type|.
 We can also check if a class has an attribute via the built-in function \lstinline|hasattr|.
 For example :
 
@@ -603,16 +603,10 @@ If there is a risk of failure, Python provides an appropriate exception to handl
 \lstinline|AttributeError| is triggered when the object does not have the supposed method (e.g. \lstinline|in_the_forest(5)|).
 \lstinline|TypeError| is raised when an operation or function is applied to an object of inappropriate type (the associated value is a string giving details about the type of mismatch, e.g. \mbox{\lstinline|5 + 'a'|}).
 
-As said before, in Python, everything is object and all objects are ``first class''.
+In Python, everything is object and all objects are ``first class''.
 It means that all objects that can be named in the language (e.g., integers, strings, functions, classes, modules, methods, etc.) have equal status.
 This definition was designed by Guido Van Rossum, creator of Python.
 This means that every object can be assigned to variables, placed in lists, stored in dictionaries, passed as arguments, and so on.
-
-So function and methods are also first class, as we can check :
-\begin{lstlisting}
->>> type(in_the_forest)  # => <class 'function'>
->>> type(Person.quack)  # => <class 'function'>
-\end{lstlisting}
 
 This principle enables us to define and redefine functions and methods simply. For example, we can do the following hack :
 
@@ -712,14 +706,13 @@ Also, we can create a class by using ``type'' : \lstinline|type('ClassName', (in
 
 \textbf{The Metaclass Hook}
 
-A lot of things show that Python can do meta-programming.
+With all these tools, we can do meta-programming.
 However, this is not always easy and/or readable.
-%As only a subset of what we can do with meta-programming is of interest.
 Python introduces an easy-way to create Metaclass, wich can be seen as a class factory.
 First, let's see how to create a meta-class with and without the facilities of Python (syntactic sugar).
 
 \begin{minipage}[c]{.5\linewidth}
-\begin{lstlisting}[caption=Without syntaxic sugar]
+\begin{lstlisting}[caption=Without syntactic sugar]
 >>> class MyMetaClass(type):
 ...   pass
 >>> type(MyMetaClass)
@@ -731,7 +724,7 @@ First, let's see how to create a meta-class with and without the facilities of P
 ~\\
 \end{minipage} \hfill
 \begin{minipage}[c]{.5\linewidth}
-\begin{lstlisting}[caption=With syntaxic sugar]
+\begin{lstlisting}[caption=With syntactic sugar]
 >>> class MyMetaClass(type):
 ...   pass
 >>> type(MyMetaClass)
@@ -778,7 +771,7 @@ If any instantiation exists, the metaclass \lstinline|Singleton| will not create
 \begin{description}
 \item[Introspection] As we have seen, we can easily inspect and access representation of an object in Python with the method \lstinline|dir()|. We can also inspect locals and globals symbol tables via \lstinline|locals()| and \lstinline|globals()|.
 
-\item[Intercession] We have seen that we can add or replace an attribute (method or variable) in an object (remember that everything is object in Python).
+\item[Intercession] We have seen that we can add or replace an attribute (method or variable) in an object.
 \end{description}
 
 \subsubsection{Meta-object protocol}
@@ -807,9 +800,6 @@ As seen before, in Python, everything is object and every object is first-class.
 \begin{minipage}[c]{.48\linewidth}
 \includegraphics[height=4cm]{typesmap.png}
 \end{minipage}
-
-
-
 
 \subsubsection{Limitations of the reflective features}
 
@@ -1022,7 +1012,6 @@ false
 >>> Custom.prototype.hasOwnProperty('constructor')
 true
 \end{lstlisting}
-\todo[inline]{Use Custom.prototype.constructor.toString() ?}
 
 
 \subsubsection{Limitations of the reflective features}
